@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Employee_Class_Example.iml" filepath="$PROJECT_DIR$/.idea/Employee_Class_Example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Rectangle_App/.idea/Rectangle_App.iml" filepath="$PROJECT_DIR$/../Rectangle_App/.idea/Rectangle_App.iml" />
+    </modules>
+  </component>
+</project>

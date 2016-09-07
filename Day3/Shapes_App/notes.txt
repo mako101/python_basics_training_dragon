@@ -1,0 +1,25 @@
+Triangle:
+
+3 sides + height?
+
+a = ( height * base) / 2 
+
+p = a + base + c
+
+
+Rectangle:
+
+height, width
+
+a = h * w
+
+p =  (h + w) *2
+
+
+circle:
+
+radius 
+
+a = 
+
+c = 
