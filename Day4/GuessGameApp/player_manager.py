@@ -1,8 +1,12 @@
 import file_io
-import lifecounter
+import life_counter
 import gameover
 
 class PlayerManager(object):
+
+    # This does not work because trying to save refrence variable as an instant variable!!!
+
+    ## DO NOT set other class instances as variables, just use them directly!!!
 
     def __init__(self, result, next_number):
 
@@ -10,10 +14,11 @@ class PlayerManager(object):
         no_of_lives = f.LoadFromFile
 
         # is it OK to use other class instances as attributes??
-        self.__lives = lifecounter.LifeCounter(lives=no_of_lives)
+        # Needs to be a class variable?
+        self.__lives = life_counter.LifeCounter(lives=no_of_lives)
         self.__result = result
         self.__next_number = next_number
-
+        self.__gameover = gameover.GameOver()
 
     def showSecondNumber(self):
         print("The second number was:", self.__next_number)
@@ -46,8 +51,7 @@ class PlayerManager(object):
             # reset the life count and call the gameover class
             self.__lives.resetLives()
             self.saveLifeCount()
-            gameover.GameOver.askIfContinue()
-
+            self.__gameover.askIfContinue()
 
 
 

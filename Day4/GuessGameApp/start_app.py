@@ -55,3 +55,4 @@ st.startGame()
 # run continuously with new numbers every time
 # have the lives remaining in the bottom + show lives before the user guess
 # Add restart
+# Add keeping score! And lose it when game ends!
