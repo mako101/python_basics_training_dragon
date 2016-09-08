@@ -1,4 +1,5 @@
 
+# this class decides whether users answer matches app's answer
 class GameLogic(object):
 
     def __init__(self, compare_result, user_input):

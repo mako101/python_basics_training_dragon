@@ -43,8 +43,7 @@ class PlayerManager(object):
             self.saveLifeCount()
 
         if self.__lives.displayLives() == 0:
-
-            # reset the life count and restart or quit
+            # reset the life count and call the gameover class
             self.__lives.resetLives()
             self.saveLifeCount()
             self.__gameover.askIfContinue()

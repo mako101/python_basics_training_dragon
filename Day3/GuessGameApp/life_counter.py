@@ -17,5 +17,3 @@ class LifeCounter(object):
 
     def resetLives(self):
         self.__lives = self.__reset_counter
-
-
