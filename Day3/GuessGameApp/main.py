@@ -19,3 +19,12 @@ startapp.StartApp.startGame()
 # have the lives remaining in the bottom + show lives before the user guess
 # Add restart
 # Add scores! Lose them if you run out of lives
+
+# -  turn lifecounter class iot counter that can be used to count both lives and scores, and save different results into file
+
+#  separate instances of the counter class or lives and points
+
+
+# Read config settings from file
+
+# - turn data from file into a discitionary - if feasible!

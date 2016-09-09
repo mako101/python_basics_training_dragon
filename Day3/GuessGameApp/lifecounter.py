@@ -31,12 +31,15 @@ class LifeCounter(object):
     @staticmethod
     def loadLivesFromFile():
 
-        # we dont do anything here so that the game can start without the settings file
+        # we dont do anything here if exception is caught
+        # This is so that the game can start without the settings file
         try:
-            saved = file_io.FileOps.LoadFromFile().split(':', 1)
+            saved = file_io.FileOps.LoadFromFile().split(':')[1]
+            saved = int(saved)
             print(saved)
             LifeCounter.__LIVES = saved
-        except:
+        except Exception as e:
+            print(e)
             '''do nothing'''
 
-
+LifeCounter.loadLivesFromFile()

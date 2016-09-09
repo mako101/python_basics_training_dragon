@@ -21,8 +21,6 @@ class FileOps(object):
         try:
             with open(FileOps.__FILE, 'r') as load_file:
                 # ensure that we read integer
-                return int(load_file.read())
+                return load_file.read()
         except:
             '''do nothing'''
-
-

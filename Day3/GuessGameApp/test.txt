@@ -1,0 +1,3 @@
+Lives:3
+Score:10
+Foo:4
