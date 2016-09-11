@@ -1,4 +1,4 @@
-import file_io
+import X_file_io
 
 class LifeCounter(object):
     
@@ -26,7 +26,7 @@ class LifeCounter(object):
 
     @staticmethod
     def saveLivesToFile():
-        file_io.FileOps.SaveToFile('Lives:' + str(LifeCounter.__LIVES))
+        X_file_io.FileOps.SaveToFile('Lives:' + str(LifeCounter.__LIVES))
 
     @staticmethod
     def loadLivesFromFile():
@@ -34,7 +34,7 @@ class LifeCounter(object):
         # we dont do anything here if exception is caught
         # This is so that the game can start without the settings file
         try:
-            saved = file_io.FileOps.LoadFromFile().split(':')[1]
+            saved = X_file_io.FileOps.LoadFromFile().split(':')[1]
             saved = int(saved)
             print(saved)
             LifeCounter.__LIVES = saved

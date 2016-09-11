@@ -1,21 +1,18 @@
 import startapp
-import lifecounter
+import counter
 
-# Can I leave this outside the start app?
 print('Welcome to the Guess Game App!', '\n')
 
-# Load lives from file
-# If it fails for whatever reason - no problem!
-# the exception will be caught, the default value will be used and the application will continue
-lifecounter.LifeCounter.loadLivesFromFile()
+# Load lives and scores from file
+# if either isn't found, use the default value(2nd arg)
+lives = counter.Counter.loadFromFile('Lives', 3)
+score = counter.Counter.loadFromFile('Score', 0)
 
 # Start the game
-startapp.StartApp.startGame()
+startapp.StartApp.startGame(lives, score)
 
 # TO DO
 
-# make sure the app runs if the settings file is absent, ie a default lives value is used
-# run continuously with new numbers every time
 # have the lives remaining in the bottom + show lives before the user guess
 # Add restart
 # Add scores! Lose them if you run out of lives

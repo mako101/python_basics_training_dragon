@@ -1,5 +1,5 @@
 import number as n
-import game_logic, compare_numbers, get_input, player_manager, file_io
+import game_logic, compare_numbers, get_input, player_manager, X_file_io
 
 # Can I leave this outside the start app?
 print('Weclome to the Guess Game App!', '\n')
@@ -11,7 +11,7 @@ class StartApp(object):
         num = n.Number()
 
         # Read current lives from settings file
-        f = file_io.FileOps()
+        f = X_file_io.FileOps()
 
         self.current_lives = f.LoadFromFile()
         self.__first_number = num.gen_number()

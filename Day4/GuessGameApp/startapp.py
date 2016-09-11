@@ -1,24 +1,20 @@
 import number as n
-import game_logic, compare_numbers, get_input, player_manager, file_io
-
+import game_logic, compare_numbers, get_input, player_manager
 
 class StartApp(object):
-        
 
     @staticmethod
-    def startGame():
+    def startGame(lives, score):
         
-
-        # Read current lives from settings file
-        current_lives = file_io.FileOps.LoadFromFile()
-
         # generate the two numbers
         num = n.Number()
         
         first_number = num.gen_number()
         next_number = num.gen_number()
 
-        print('Lives:', current_lives)
+        print('Lives:', lives)
+        print('Score:', score)
+        print()
         print('The first number is', first_number)
 
         # first we need to get users answer
