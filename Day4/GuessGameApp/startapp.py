@@ -1,11 +1,15 @@
 import number as n
-import game_logic, compare_numbers, get_input, player_manager
+import game_logic, game_session, get_input, player_manager, counter
 
 class StartApp(object):
 
     @staticmethod
-    def startGame(lives, score):
-        
+    def start_game():
+
+        # Load lives and scores from file
+        # if either isn't found, use the default value(2nd arg)
+        lives = counter.Counter.load_from_file('Lives', game_session.GameSession.DEFAULT_LIVES)
+        score = counter.Counter.load_from_file('Score', game_session.GameSession.DEFAULT_SCORE)
         # generate the two numbers
         num = n.Number()
         
@@ -16,26 +20,31 @@ class StartApp(object):
         print('Score:', score)
         print()
         print('The first number is', first_number)
+        print("Do you think next number is higher or lower? ")
 
         # first we need to get users answer
-        gi = get_input.GetInput(first_number)
-        user_answer = gi.get_input()
+        # we are also checking if they want to save and quit
+        # hence we need to pass lives and score here
+        user_answer = get_input.GetInput.user_choice()
         #print('User answer is', user_answer)
 
-        # then the application compares two generated numbers and stores the result
-        cn = compare_numbers.CompareNumbers(first_number, next_number)
-        app_answer = cn.compare()
-        #print('App answer is', app_answer)
-
-        # Now we compare user's answer to app's answer and decide if there is a match
-        gl = game_logic.GameLogic(app_answer, user_answer)
-        result = gl.decide()
+        # the gamelogic module decides whether the user won or lost
+        outcome = game_logic.GameLogic.decide(first_number, next_number, user_answer)
         #print('The result is', result)
 
-        # we pass the match to the pm module that determines if the player has won or lost and manages lives
-        pm = player_manager.PlayerManager(result=result, next_number=next_number)
-        pm.processResult()
+        # we pass the result to player manager class that will:
+        # notify user
+        # update lives count
+        # update score count
+        # call gameover module when user is out of lives
+        pm = player_manager.PlayerManager(
+            outcome=outcome,
+            lives=lives,
+            score=score,
+            next_number=next_number,
+            )
+        pm.process_result()
 
         # reset the class instance to generate new numbers and call it again
-        StartApp.startGame()
+        StartApp.start_game()
 

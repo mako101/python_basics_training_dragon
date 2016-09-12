@@ -1,11 +1,12 @@
 
+# this class has methods to read and write values to the config file
 class FileOps(object):
 
     __FILE = 'settings.txt'
 
     # find relevant config line and return its index
     @staticmethod
-    def findLineIndex(item):
+    def find_line_index(item):
 
         lines = open(FileOps.__FILE, 'r+').readlines()
 
@@ -17,13 +18,13 @@ class FileOps(object):
 
     # update file config for specified item
     @staticmethod
-    def saveValue(item, value):
+    def save_value(item, value):
         try:
             # if the value exists:
             # update the line its in and overwrite the file
             try:
                 lines = open(FileOps.__FILE, 'r').readlines()
-                line_index = FileOps.findLineIndex(item)
+                line_index = FileOps.find_line_index(item)
 
                 # update lines list
                 lines[line_index] = str(item + ':' + str(value) + '\n')
@@ -44,10 +45,10 @@ class FileOps(object):
 
     # update file config for specified item
     @staticmethod
-    def loadValue(item):
+    def load_value(item):
         try:
             lines = open(FileOps.__FILE, 'r').readlines()
-            line_index = FileOps.findLineIndex(item)
+            line_index = FileOps.find_line_index(item)
 
             # get the value
             value = lines[line_index].split(':', 1)[1]
@@ -57,8 +58,4 @@ class FileOps(object):
         except:
             '''say nothing'''
 
-#print(FileOps.findLineIndex('Lives'))
-# FileOps.saveValue('Lives', 10)
-# FileOps.saveValue('Score', 10)
-# print(FileOps.loadValue('Lives'))
 

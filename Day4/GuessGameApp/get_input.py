@@ -1,20 +1,24 @@
+import game_session
+
 
 class GetInput(object):
 
-    def __init__(self, first_number):
+    __MSG = 'Please enter H for higher or L for Lower, Q to quit or N new game: '
 
-        self.__first_number = first_number
+    @staticmethod
+    def user_choice():
 
-    def get_input(self):
-
-        user_input = input("Do you think next number is higher or lower? ")
+        # this won't crash no matter which  characters the users type
+        # so no need for exceptions
+        user_input = input(GetInput.__MSG).upper()
 
         # Make sure only the right values can be passed
         while user_input != 'H' and user_input != 'L':
-                print('Please enter H for higher or L for Lower')
-                # ASK OLU
-                # Have to reset the variable again,
-                # otherwise it will always have the furst value the user typed
-                user_input = input("Do you think next number is higher or lower? ")
+            if user_input == 'Q':
+                game_session.GameSession.save_and_quit()
+            elif user_input == 'N':
+                game_session.GameSession.new_game()
+            else:
+                user_input = input(GetInput.__MSG).upper()
 
         return user_input

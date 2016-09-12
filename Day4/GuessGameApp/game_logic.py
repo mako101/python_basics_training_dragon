@@ -1,17 +1,21 @@
 
-# this class decides whether users answer matches app's answer
+
+# this class decides whether user has guessed correctly
 class GameLogic(object):
 
-    def __init__(self, compare_result, user_input):
+    # first the app compares numbers
+    # then we compare the result with user input
+    @staticmethod
+    def decide(first_number, next_number, user_input):
 
-        self.__compare_result = compare_result
-        self.__user_input = user_input
-
-    def decide(self):
-        if self.__compare_result == self.__user_input:
-            result = 1
-
+        if next_number > first_number:
+            result = 'H'
         else:
-            result = 0
+            result = 'L'
 
-        return result
+        if result == user_input:
+            decision = 1
+        else:
+            decision = 0
+
+        return decision

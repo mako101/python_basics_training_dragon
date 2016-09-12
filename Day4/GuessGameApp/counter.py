@@ -1,36 +1,28 @@
-import configmanager
-
+import configmanager as c
+import game_session
 
 class Counter(object):
 
-    # @staticmethod
-    # def displayItems(item):
-    #     return item
+    @staticmethod
+    def add(item, value):
+        value += 1
+        c.FileOps.save_value(item, value)
 
     @staticmethod
-    def gainItem(item):
-        item += 1
+    def substract(item, value):
+        value -= 1
+        if value == 0:
+            # Reset the game
+            game_session.GameSession.game_over()
+        else:
+            c.FileOps.save_value(item, value)
 
     @staticmethod
-    def loseItem(item):
-        item -= 1
-
-    @staticmethod
-    def resetItems(item, default):
-        item = default
-
-    # NOT NEEDED, can just call configmanager.FileOps.saveValue()
-    # But can set it here so that its obivous
-    @staticmethod
-    def saveToFile(item_name, item):
-        configmanager.FileOps.saveValue(item_name, item)
-
-    @staticmethod
-    def loadFromFile(item_name, default):
+    def load_from_file(item, default):
 
         # try to read the value from file or return default
         try:
-            saved = configmanager.FileOps.loadValue(item_name)
+            saved = c.FileOps.load_value(item)
             saved = int(saved)
 
         # use default value if there are any problems
@@ -38,4 +30,3 @@ class Counter(object):
             saved = default
         return saved
 
-print(Counter.loadFromFile('Score', 0))
